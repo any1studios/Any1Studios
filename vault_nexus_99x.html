@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome Jai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/main.js"></script>
+  <style>
+    /* Structure & Features Styles */
+    .dashboard { max-width: 900px; margin: 0 auto; width: 100%; }
+    .header-dashboard {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    
+    .nav-actions { display: flex; gap: 15px; align-items: center; }
+    .action-btn { 
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: 0.3s;
+    }
+    .action-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .action-btn.active { background: var(--card); border-color: var(--accent); color: var(--accent); }
+
+    .month-header {
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--muted); margin: 40px 0 15px 0; padding-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .client-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; margin-bottom: 16px; overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .client-card:hover { border-color: var(--accent); }
+
+    .client-header {
+      padding: 16px 20px; display: flex; justify-content: space-between; 
+      align-items: center; cursor: pointer; user-select: none;
+    }
+    .client-info { display: flex; align-items: center; gap: 15px; }
+    
+    .avatar {
+      width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      font-weight: 600; color: var(--accent); background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .client-meta h3 { margin: 0 0 4px 0; font-size: 1.1rem; transition: color 0.3s; }
+    .client-meta p { margin: 0; font-size: 0.85rem; color: var(--muted); }
+    
+    .unread-text { color: var(--accent) !important; font-weight: bold; }
+    .read-text { color: var(--text) !important; font-weight: normal; }
+    
+    .badge {
+      font-size: 0.75rem; border: 1px solid var(--accent); color: inherit;
+      padding: 6px 12px; border-radius: 20px; text-decoration: none; transition: 0.2s;
+    }
+    .badge:hover { background: var(--accent); color: #fff; }
+
+    .message-thread { display: none; border-top: 1px solid var(--border); }
+    .message-item {
+      padding: 20px; border-bottom: 1px solid var(--border); display: flex;
+      gap: 20px;
+    }
+    .message-item:last-child { border-bottom: none; }
+    
+    .msg-body { flex: 1; font-size: 0.95rem; line-height: 1.6; }
+    .msg-time { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; font-weight: 500; }
+    
+    .btn-icon {
+      background: none; border: none; font-size: 1.2rem; cursor: pointer; 
+      padding: 5px; transition: 0.2s; height: fit-content;
+    }
+    .btn-delete { color: var(--muted); }
+    .btn-delete:hover { color: #ef4444; }
+    .btn-restore { color: var(--muted); font-size: 1.5rem; }
+    .btn-restore:hover { color: #10b981; }
+
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+   <a href="index.html" class="logo">ANY1 Studios</a>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="contact reveal" style="padding-top: 140px; min-height: 100vh;">
+  <div class="dashboard">
+    <div class="header-dashboard">
+      <h2 class="section-title" style="margin: 0;">Inquiries Vault</h2>
+      <div class="nav-actions">
+        <button id="btnVault" class="action-btn active" onclick="switchTab('vault')">Inbox</button>
+        <button id="btnBin" class="action-btn" onclick="switchTab('bin')">Recycle Bin 🗑️</button>
+        <a href="index.html" class="action-btn" style="border: none;">Logout ✕</a>
+      </div>
+    </div>
+
+    <div id="vaultContent"></div>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid rgba(0,0,0,0.05); padding: 40px 20px; text-align: center; color: var(--muted); font-size: 0.95rem;">
+  © 2026 ANY1 Studios</footer>
+
+<script>
+  let currentTab = 'vault';
+
+  function getSmartDate(dateString) {
+    const msgDate = new Date(dateString);
+    if (isNaN(msgDate.getTime())) return dateString;
+
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    const timeOptions = { hour: '2-digit', minute: '2-digit' };
+    const timeStr = msgDate.toLocaleTimeString([], timeOptions);
+
+    if (msgDate.toDateString() === today.toDateString()) {
+      return `Today, ${timeStr}`;
+    } else if (msgDate.toDateString() === yesterday.toDateString()) {
+      return `Yesterday, ${timeStr}`;
+    } else {
+      return `${msgDate.toLocaleDateString()} at ${timeStr}`;
+    }
+  }
+
+  function getMonthYear(dateString) {
+    let d = new Date(dateString);
+    if (isNaN(d.getTime())) return "Archived Files"; 
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return `${months[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  function switchTab(tab) {
+    currentTab = tab;
+    document.getElementById('btnVault').classList.toggle('active', tab === 'vault');
+    document.getElementById('btnBin').classList.toggle('active', tab === 'bin');
+    loadVault();
+  }
+
+  function loadVault() {
+    const container = document.getElementById('vaultContent');
+    const storageKey = currentTab === 'vault' ? 'dubbingMessages' : 'dubbingBin';
+    let msgs = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+    if (msgs.length === 0) {
+      container.innerHTML = `<div class="empty-state">No messages in ${currentTab === 'vault' ? 'Inbox' : 'Recycle Bin'}.</div>`;
+      return;
+    }
+
+    msgs.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const vaultData = {};
+    
+    msgs.forEach(msg => {
+      let monthYear = getMonthYear(msg.date);
+      if (!vaultData[monthYear]) vaultData[monthYear] = {};
+      if (!vaultData[monthYear][msg.email]) {
+        vaultData[monthYear][msg.email] = { 
+          name: msg.name, 
+          channel: msg.channel, 
+          messages: [],
+          hasUnread: false 
+        };
+      }
+      vaultData[monthYear][msg.email].messages.push(msg);
+      if(currentTab === 'vault' && !msg.read) {
+        vaultData[monthYear][msg.email].hasUnread = true;
+      }
+    });
+
+    let htmlContent = '';
+    for (const [month, clients] of Object.entries(vaultData)) {
+      htmlContent += `<div class="month-header">${month}</div>`;
+      
+      for (const [email, clientData] of Object.entries(clients)) {
+        let initial = clientData.name.charAt(0).toUpperCase();
+        
+        // YOUTUBE AUTO-SEARCH LOGIC
+        let channelBtn = '';
+        if (clientData.channel) {
+            // Channel name ko search URL ke hisaab se format kar rahe hain (spaces ko + ya %20 me badalna)
+            let ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(clientData.channel)}`;
+            // Badge me ab channel ka naam aayega
+            channelBtn = `<a href="${ytSearchUrl}" target="_blank" class="badge">▶ YouTube: ${clientData.channel}</a>`;
+        }
+
+        let msgCount = clientData.messages.length;
+        let nameClass = clientData.hasUnread ? 'unread-text' : 'read-text';
+
+        htmlContent += `
+        <div class="client-card">
+          <div class="client-header" onclick="toggleThread(this, '${email}')">
+            <div class="client-info">
+              <div class="avatar">${initial}</div>
+              <div class="client-meta">
+                <h3 class="${nameClass}">${clientData.name} <span style="color: var(--muted); font-size: 0.8rem; font-weight: normal;">(${msgCount})</span></h3>
+                <p>${email}</p>
+              </div>
+            </div>
+            <div onclick="event.stopPropagation();">${channelBtn}</div>
+          </div>
+          <div class="message-thread">
+        `;
+
+        clientData.messages.forEach(m => {
+          let smartTime = getSmartDate(m.date);
+          let actionBtns = currentTab === 'vault' 
+            ? `<button class="btn-icon btn-delete" title="Move to Bin" onclick="moveToBin('${m.date}')">🗑️</button>` 
+            : `<button class="btn-icon btn-restore" title="Restore" onclick="restoreMsg('${m.date}')">↺</button>
+               <button class="btn-icon btn-delete" title="Permanent Delete" onclick="hardDelete('${m.date}')">✕</button>`;
+
+          htmlContent += `
+            <div class="message-item">
+              <div class="msg-body">
+                <div class="msg-time">${smartTime}</div>
+                <div>${m.message.replace(/\n/g, '<br>')}</div>
+              </div>
+              <div style="display:flex; gap:10px;">${actionBtns}</div>
+            </div>
+          `;
+        });
+        htmlContent += `</div></div>`;
+      }
+    }
+    container.innerHTML = htmlContent;
+  }
+
+  function toggleThread(element, email) {
+    const thread = element.nextElementSibling;
+    const isOpening = thread.style.display === "none" || thread.style.display === "";
+    
+    if (isOpening) {
+      thread.style.display = "block";
+      if(currentTab === 'vault') markAsRead(email);
+    } else {
+      thread.style.display = "none";
+    }
+  }
+
+  function markAsRead(email) {
+    let msgs = JSON.parse(localStorage.getItem('dubbingMessages')) || [];
+    let updated = false;
+    msgs = msgs.map(m => {
+      if(m.email === email && !m.read) { m.read = true; updated = true; }
+      return m;
+    });
+    if(updated) { localStorage.setItem('dubbingMessages', JSON.stringify(msgs)); loadVault(); }
+  }
+
+  function moveToBin(dateId) {
+    let msgs = JSON.parse(localStorage.getItem('dubbingMessages')) || [];
+    let bin = JSON.parse(localStorage.getItem('dubbingBin')) || [];
+    let msgToMove = msgs.find(m => m.date === dateId);
+    if(msgToMove) {
+      bin.push(msgToMove);
+      msgs = msgs.filter(m => m.date !== dateId);
+      localStorage.setItem('dubbingMessages', JSON.stringify(msgs));
+      localStorage.setItem('dubbingBin', JSON.stringify(bin));
+      loadVault();
+    }
+  }
+
+  function restoreMsg(dateId) {
+    let msgs = JSON.parse(localStorage.getItem('dubbingMessages')) || [];
+    let bin = JSON.parse(localStorage.getItem('dubbingBin')) || [];
+    let msgToRestore = bin.find(m => m.date === dateId);
+    if(msgToRestore) {
+      msgs.push(msgToRestore);
+      bin = bin.filter(m => m.date !== dateId);
+      localStorage.setItem('dubbingMessages', JSON.stringify(msgs));
+      localStorage.setItem('dubbingBin', JSON.stringify(bin));
+      loadVault();
+    }
+  }
+
+  function hardDelete(dateId) {
+    if(confirm("Are you sure? This message will be permanently deleted.")) {
+      let bin = JSON.parse(localStorage.getItem('dubbingBin')) || [];
+      bin = bin.filter(m => m.date !== dateId);
+      localStorage.setItem('dubbingBin', JSON.stringify(bin));
+      loadVault();
+    }
+  }
+
+  window.onload = loadVault;
+</script>
+
+</body>
+</html>

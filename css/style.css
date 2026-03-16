@@ -1,0 +1,532 @@
+/* ===============================
+   RESET + APPLE GLASS TYPOGRAPHY
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+  --text: #1d1d1f;
+  --muted: #515154;
+  --accent: #0071e3; 
+  --glass-bg: rgba(255, 255, 255, 0.6); 
+  --glass-border: rgba(255, 255, 255, 0.5); 
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05); 
+}
+
+/* STRICT HORIZONTAL SCROLL LOCK */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--text);
+  background: linear-gradient(-45deg, #f2f2f7, #e0eaf5, #f5e6ea, #e8f4f8);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite, pageFadeIn 1s ease forwards;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   NAVBAR & HAMBURGER (PC VIEW)
+================================ */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: fixed;
+  width: 90%;
+  left: 5%; 
+  top: 20px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  transition: all 0.4s ease;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+.nav nav, .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav nav a, .nav-links a {
+  text-decoration: none !important;
+  color: var(--text) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.nav nav a:hover, .nav-links a:hover {
+  color: var(--accent) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--text) !important;
+  transition: 0.3s ease;
+  border-radius: 2px;
+}
+
+/* ===============================
+   SECTIONS & TYPOGRAPHY
+================================ */
+
+section {
+  padding: 120px 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.section-title + p, section > h4 + p, form + h4 + p {
+  text-align: center !important;
+  margin: 0 auto 30px auto !important;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.hero { text-align: center; align-items: center; }
+.hero h1 {
+  font-size: 5.5rem;
+  font-weight: 800;
+  letter-spacing: -2.5px;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #1d1d1f, #434344);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--text);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 113, 227, 0.2);
+}
+
+/* ===============================
+   GRIDS & GLASS CARDS
+================================ */
+
+.process-grid, .testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.process-step, .testimonial-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-step:hover, .testimonial-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* ===============================
+   PORTFOLIO
+================================ */
+
+.projects-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-item {
+  position: relative;
+  height: 450px;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+}
+
+.project-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0%);
+  transition: all 0.6s ease;
+}
+
+.project-item:hover img {
+  transform: scale(1.08);
+}
+
+.project-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 2;
+  opacity: 0;
+  transition: 0.4s ease;
+  pointer-events: none;
+}
+
+.project-item:hover .overlay {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+.overlay h3 { font-size: 1.6rem; margin-bottom: 5px; color: white; }
+.overlay p { font-size: 1rem; color: #ddd; margin: 0 !important; text-align: left !important; }
+
+/* ===============================
+   FORMS & FOOTER
+================================ */
+
+input, textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 16px 20px;
+  margin: 10px 0;
+  border-radius: 16px;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  margin-top: 50px;
+}
+
+/* ===============================
+   LOADER & REVEAL
+================================ */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: #f5f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE (OPTIMISED)
+================================ */
+
+/* Scroll Lock Logic */
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none; /* Mobile par bounce scroll rokne ke liye */
+}
+
+@media (max-width: 900px) {
+  /* UI Variables for easy editing */
+  :root {
+    --panel-bg: rgba(255, 255, 255, 0.98); /* Solid touch with slight glass */
+    --bubble-bg: rgba(0, 0, 0, 0.05);
+    --bubble-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --panel-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Global Mobile Adjustments */
+  html, body { overflow-x: hidden; width: 100vw; }
+  
+  section { 
+    padding: 80px 20px 40px; 
+    min-height: auto; /* Mobile par lamba khali space khatam karne ke liye */
+  }
+
+  .hero h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); } /* Responsive font size */
+  
+  /* ⬇️ NAYA ADD KIYA HUA CODE: Mobile par Section Titles ka size theek karne ke liye ⬇️ */
+  .section-title {
+    font-size: 2.2rem !important; 
+    margin-bottom: 30px !important; 
+    letter-spacing: -1px !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Grid Optimisation */
+  .process-grid, .testimonial-grid, .projects-track {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* Card Fixes */
+  .project-item, .testimonial-card, .process-step {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+
+  /* Fixed Header */
+  .nav { 
+    width: 100%;
+    inset: 0 0 auto 0; /* top, right, bottom, left shortcut */
+    padding: 12px 20px;
+    border-radius: 0;
+    background: var(--panel-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 10000;
+  }
+
+  /* ===============================
+     HORIZONTAL TOP PANEL
+  ================================ */
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--panel-bg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 24px 12px;
+    gap: 12px;
+    
+    /* Strong Separation Shadow */
+    box-shadow: var(--panel-shadow);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    /* Animation: Slide + Fade */
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ===============================
+     APPLE CAMERA MODE BUBBLES
+  ================================ */
+  .nav-links a {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    border-radius: 50px;
+    background: var(--bubble-bg);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); /* Subtle 3D look */
+    transition: all 0.2s ease;
+  }
+
+  /* Active/Selected State */
+  .nav-links a:active, 
+  .nav-links a:hover {
+    background: #ffffff;
+    color: var(--text);
+    box-shadow: var(--bubble-shadow);
+    transform: scale(0.96); /* Press effect like iPhone buttons */
+  }
+
+  /* Hamburger Toggle Fix */
+  .hamburger { display: flex; z-index: 10001; }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+/* ===============================
+   PORTFOLIO PREMIUM EXPAND BLOCK (NO BLUR + STRICT SCROLL LOCK)
+================================ */
+
+/* Jab box open ho, toh scroll 100% lock ho jaye */
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
+}
+
+.project-modal {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  
+  /* Blur bilkul hata diya hai. Sirf clean dark background taaki white box ubhar kar aaye */
+  background: rgba(0, 0, 0, 0.6); 
+  
+  z-index: 99999; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  
+  opacity: 0; 
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.project-modal.active { opacity: 1; visibility: visible; }
+
+/* Bada Expanded Card */
+.modal-content.expanded-block {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 90%; 
+  max-width: 950px; 
+  display: flex; 
+  gap: 40px; 
+  padding: 30px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,0,0,0.05);
+  
+  transform: scale(0.95) translateY(20px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-modal.active .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Modal ke andar ki image setting */
+.modal-image-container {
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.modal-image-container img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* Modal ke andar ka text */
+.modal-text-container {
+  flex: 1.2;
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+
+/* Close Button Styling */
+.close-modal {
+  position: absolute; top: 30px; right: 40px;
+  font-size: 1.5rem; color: #1d1d1f; cursor: pointer;
+  background: rgba(255,255,255,0.9);
+  width: 50px; height: 50px; border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s;
+  z-index: 10;
+}
+.close-modal:hover { transform: scale(1.1); background: #ffffff; }
+
+/* Mobile par isko ek ke niche ek kar dena */
+@media(max-width: 900px) {
+  .modal-content.expanded-block { flex-direction: column; padding: 20px; gap: 20px; max-height: 90vh; overflow-y: auto; }
+  .modal-image-container { height: 250px; flex: none; }
+  .close-modal { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.2rem; }
+}

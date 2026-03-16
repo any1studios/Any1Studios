@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - ANY1 Studios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/main.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+  <style>
+    /* Compact Section Padding */
+    .compact-section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; min-height: auto !important; }
+    
+    .badge {
+      display: inline-block; padding: 6px 14px; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      background: rgba(0, 113, 227, 0.1); color: var(--accent); margin-bottom: 15px;
+    }
+
+    .premium-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;
+      margin-top: 30px;
+    }
+
+    .premium-card {
+      background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 25px; transition: 0.3s ease; box-shadow: var(--glass-shadow);
+    }
+    .premium-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.9); }
+    
+    .icon-box {
+      width: 50px; height: 50px; background: rgba(0, 113, 227, 0.08); border-radius: 12px;
+      display: flex; justify-content: center; align-items: center; font-size: 1.5rem; margin-bottom: 15px;
+    }
+
+    .video-wrapper {
+      width: 100%; aspect-ratio: 9/16; border-radius: 20px; overflow: hidden; background: #000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid var(--glass-border);
+    }
+
+    .price-highlight {
+      background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+      border: 1px solid var(--accent); border-radius: 20px; padding: 30px;
+      text-align: center; max-width: 500px; margin: 30px auto; box-shadow: 0 15px 35px rgba(0,113,227,0.1);
+    }
+
+    /* =========================================
+       HERO SECTION: PREMIUM LOTTIE ANIMATION
+    ========================================= */
+    .hero-container {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 40px; max-width: 1200px; width: 100%; margin: 0 auto;
+    }
+    
+    .hero-text { 
+      flex: 1; min-width: 320px; text-align: left; z-index: 2; 
+    }
+    
+    .hero-anim-box {
+      flex: 1.2; min-width: 320px; display: flex; justify-content: center; align-items: center;
+      z-index: 1; position: relative; height: auto;
+    }
+
+    /* Premium Cinematic Aura (Glowing Background) */
+    .cinematic-aura {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0, 113, 227, 0.15) 0%, transparent 70%);
+      filter: blur(40px);
+      border-radius: 50%;
+      animation: pulse-aura 6s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes pulse-aura {
+      0% { transform: scale(0.8); opacity: 0.4; }
+      100% { transform: scale(1.2); opacity: 1; }
+    }
+
+    /* Lottie Wrapper Styling */
+    .lottie-wrapper {
+      width: 100%;
+      max-width: 750px;
+      transform: scale(1.1);
+      /* Halka sa blue premium glow */
+      filter: drop-shadow(0 0 25px rgba(0, 113, 227, 0.3)); 
+      animation: cinematic-float 8s ease-in-out infinite; 
+    }
+
+    /* Force Lottie Colors to Match Website Theme */
+    #hero-lottie svg path {
+      stroke: var(--accent) !important; 
+    }
+
+    @keyframes cinematic-float {
+      0%, 100% { transform: translateY(0) scale(1.1); }
+      50% { transform: translateY(-12px) scale(1.1); }
+    }
+
+    /* =========================================
+       MOBILE ADJUSTMENTS (UPDATED)
+    ========================================= */
+    @media (max-width: 768px) {
+      .hero-container { text-align: center; justify-content: center; }
+      .hero-text { text-align: center; }
+      
+      /* 1. Animation completely hidden on mobile */
+      .hero-anim-box { display: none !important; }
+      
+      /* 2. Text Size Reduction for Mobile */
+      .hero-text h1 { font-size: 2.2rem !important; line-height: 1.25 !important; }
+      .hero-text p { font-size: 1rem !important; margin-bottom: 20px !important; }
+      
+      h2 { font-size: 1.8rem !important; margin-bottom: 10px !important; }
+      p { font-size: 0.95rem !important; }
+      .badge { font-size: 0.75rem !important; padding: 5px 12px !important; margin-bottom: 10px !important; }
+      
+      .price-highlight strong { font-size: 2.5rem !important; }
+      .compact-section { padding: 50px 15px !important; }
+      .btn { padding: 12px 24px !important; font-size: 1rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor"></div><div class="cursor-dot"></div>
+
+<header class="nav">
+  <a href="index.html" class="logo">ANY1 Studios</a>
+  <div class="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero reveal" style="min-height: 100vh !important; display: flex; align-items: center; justify-content: center; padding: 80px 20px 20px; position: relative;">
+  
+  <div class="hero-container">
+    
+    <div class="hero-text">
+      <h1 style="font-size: clamp(3rem, 2vw, 3.8rem); line-height: 1.15; letter-spacing: -1px; font-weight: 800; color: var(--text); margin-bottom: 20px;">
+        Bring Your Content to<br>Indian Audience <br><span style="color: var(--accent);">with us</span>
+      </h1>
+      <p style="font-size: 1.15rem; color: var(--muted); max-width: 600px; margin-bottom: 30px; line-height: 1.6;">
+        Reach the Indian audience with natural and engaging Hindi voiceovers. We help creators adapt their content into fluent Hindi while keeping the original emotion, tone, and storytelling intact.
+      </p>
+      <a href="contact.html" class="btn" style="padding: 14px 32px; font-size: 1.05rem;">Start a Project</a>
+    </div>
+
+    <div class="hero-anim-box">
+      <div class="cinematic-aura"></div>
+      <div id="hero-lottie" class="lottie-wrapper"></div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="reveal compact-section" style="background: rgba(0,0,0,0.02); border-radius: 30px; padding: 60px 40px;">
+  <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+    <span class="badge">What We Do</span>
+    <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Services</h2>
+    <p style="font-size: 1.1rem; color: var(--muted);">We provide Hindi dubbing services designed for creators who want their content to connect naturally with the Indian audience.</p>
+  </div>
+
+  <div class="premium-grid">
+    <div class="premium-card">
+      <div class="icon-box">🎙️</div>
+      <p style="font-size: 1.05rem; color: var(--text); margin: 0;"><strong>Human-assisted AI voiceover</strong> for consistent and natural sounding dubbing</p>
+    </div>
+    <div class="premium-card">
+      <div class="icon-box">📝</div>
+      <p style="font-size: 1.05rem; color: var(--text); margin: 0;"><strong>We Work With</strong> Youtube, Animated, explainer etc. videos</p>
+    </div>
+    <div class="premium-card">
+      <div class="icon-box">🎧</div>
+      <p style="font-size: 1.05rem; color: var(--text); margin: 0;"><strong>We deliver final files </strong>in upload-ready audio format</p>
+    </div>
+  </div>
+   
+  <div style="display: flex; justify-content: center; width: 100%; margin-top: 30px;">
+    <a href="services.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 1.05rem;">View All Services →</a>
+  </div>
+</section>
+
+<section class="reveal compact-section">
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+    
+    <div style="flex: 1; min-width: 280px; max-width: 300px; margin: 0 auto;">
+      <div class="video-wrapper">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tElGMxMwg1U" title="Hindi Dubbing Showcase" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    
+    <div style="flex: 2; min-width: 300px;">
+      <span class="badge">Audience Growth</span>
+      <h2 style="font-size: 2.2rem; margin-bottom: 20px; letter-spacing: -0.5px;">Why Hindi Dubbing Matters</h2>
+      <p style="font-size: 1.1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+        India is one of the largest YouTube audiences in the world. Many global creators already receive a significant portion of their views from India.
+      </p>
+      <p style="font-size: 1.1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+        Even the world’s biggest YouTube creator has mentioned that around 10–15% of his audience comes from India, showing the massive potential of the Indian viewer base. 
+      </p>
+      <p style="font-size: 1.1rem; color: var(--text); font-weight: 500; line-height: 1.7; margin-bottom: 20px; border-left: 4px solid var(--accent); padding-left: 15px;">
+       🚀 While YouTube now supports AI voiceovers, they still struggle with natural tone and real emotion. Content delivered with authentic human expression connects faster, keeps viewers watching longer, and builds stronger engagement. </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="reveal compact-section">
+  <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+    <span class="badge">Portfolio</span>
+    <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Our Work</h2>
+    <p style="font-size: 1.1rem; color: var(--muted);">We’ve worked with creators across multiple platforms delivering Hindi dubbing for different types of content.</p>
+  </div>
+
+  <div class="premium-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+    <div class="premium-card" style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h4 style="margin: 0 0 5px 0; font-size: 1.1rem; color: var(--text);">HKDO</h4>
+        <p style="margin: 0; font-size: 0.9rem; color: var(--muted);">Telegram Channel</p>
+      </div>
+      <span style="font-size: 0.9rem; font-weight: bold; color: var(--accent); background: rgba(0,113,227,0.1); padding: 5px 10px; border-radius: 8px;">70K+ Subs</span>
+    </div>
+
+    <div class="premium-card" style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h4 style="margin: 0 0 5px 0; font-size: 1.1rem; color: var(--text);">Hindi Dubbing Reels</h4>
+        <p style="margin: 0; font-size: 0.9rem; color: var(--muted);">Instagram</p>
+      </div>
+      <span style="font-size: 0.9rem; font-weight: bold; color: var(--accent); background: rgba(0,113,227,0.1); padding: 5px 10px; border-radius: 8px;">45K+ Followers</span>
+    </div>
+
+    <div class="premium-card" style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h4 style="margin: 0 0 5px 0; font-size: 1.1rem; color: var(--text);">Hindi Kahani TV10</h4>
+        <p style="margin: 0; font-size: 0.9rem; color: var(--muted);">Animation Channel</p>
+      </div>
+      <span style="font-size: 0.9rem; font-weight: bold; color: var(--accent); background: rgba(0,113,227,0.1); padding: 5px 10px; border-radius: 8px;">60+ Videos</span>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="portfolio.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 1.05rem;">View Full Portfolio →</a>
+  </div>
+</section>
+
+<section class="reveal compact-section">
+  <div style="text-align: center;">
+    <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Pricing</h2>
+    <p style="font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto;">Our pricing is designed to support small and growing creators, making quality Hindi dubbing accessible without unnecessary costs.</p>
+  </div>
+
+  <div class="price-highlight">
+    <span style="font-size: 1.2rem; color: var(--text); font-weight: 500;">Starting from</span><br>
+    <strong style="color: var(--accent); font-size: 3rem; line-height: 1.2;">$35</strong>
+    <span style="font-size: 1.2rem; color: var(--text); font-weight: 500;"> / video</span>
+    <p style="font-size: 0.9rem; color: var(--muted); margin-top: 15px;">Final pricing may vary depending on video length and specific requirements.</p>
+  </div>
+
+  <div style="text-align: center;">
+    <a href="pricing.html" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 1.05rem;">View Pricing Details →</a>
+  </div>
+</section>
+
+<section class="reveal compact-section" style="text-align: center; padding-bottom: 80px;">
+  <div style="max-width: 800px; margin: 0 auto; background: var(--glass-bg); padding: 50px 30px; border-radius: 24px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);">
+    <h2 style="font-size: 2.2rem; margin-bottom: 10px; letter-spacing: -0.5px; color: var(--text);">Ready to bring your content to the Indian audience?</h2>
+    <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 30px;">Let’s make your videos sound natural in Hindi.</p>
+    <a href="contact.html" class="btn" style="padding: 14px 32px;">Start a Project</a>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid rgba(0,0,0,0.05); padding: 40px 20px; text-align: center; color: var(--muted); font-size: 0.95rem;">
+  © 2026 ANY1 Studios</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var anim = lottie.loadAnimation({
+      container: document.getElementById('hero-lottie'), 
+      renderer: 'svg', 
+      loop: true, 
+      autoplay: true, 
+      path: 'assets/webani.json' 
+    });
+    
+    anim.setSpeed(0.5);
+  });
+</script>
+
+</body>
+</html>

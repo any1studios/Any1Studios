@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact - ANY1 Studios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+
+<div class="cursor"></div><div class="cursor-dot"></div>
+
+<header class="nav">
+ <a href="index.html" class="logo">ANY1 Studios</a>
+  
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="contact" style="padding-top: 160px; min-height: 100vh;">
+  <h2 class="section-title">Let's Work Together</h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 60px;">
+    
+    <div style="flex: 1; min-width: 300px;">
+      <p style="font-size: 1.2rem; margin-bottom: 15px;">Have a project in mind or want to discuss Hindi dubbing for your content?</p>
+      <p style="color: var(--muted); margin-bottom: 30px;">We’re here to help. Reach out to us and let’s see how we can work together. We usually respond within 24 hours.</p>
+
+      <div style="background: var(--card); padding: 30px; border-radius: 18px; border: 1px solid var(--border); margin-bottom: 30px;">
+        <h4 style="margin-bottom: 15px;">Contact Details</h4>
+        <p style="margin-bottom: 10px; color: var(--muted);"><strong>Email:</strong> contact.any1studios@gmail.com</p>
+        <p style="color: var(--muted);"><strong>Working Hours:</strong> Monday – Saturday</p>
+      </div>
+
+      <div>
+        <h4 style="margin-bottom: 15px;">What to Share (Optional but Helpful)</h4>
+        <ul style="color: var(--muted); line-height: 1.8; margin-left: 20px; font-size: 0.95rem;">
+          <li>Type of content (YouTube, Reels, Animation, etc.)</li>
+          <li>Video length & Number of videos</li>
+          <li>Any specific voice requirements</li>
+        </ul>
+        <p style="margin-top: 15px; font-size: 0.85rem; color: var(--accent);">* This helps us respond faster with the right details.</p>
+      </div>
+    </div>
+
+    <div style="flex: 1; min-width: 300px;">
+      <form id="contactForm" style="max-width: 100%;">
+        <input type="text" id="userName" placeholder="Name" required>
+        <input type="email" id="userEmail" placeholder="Email" required>
+        <input type="text" id="userChannel" placeholder="Channel Name (Optional)">
+        <textarea id="userMessage" placeholder="Message & Content Details (Video length, type, etc.)" rows="7" required></textarea>
+        <button type="submit" class="btn" style="margin-top: 15px; border: none; cursor: pointer;">Start a Conversation</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer style="border-top: 1px solid rgba(0,0,0,0.05); padding: 40px 20px; text-align: center; color: var(--muted); font-size: 0.95rem;">
+  © 2026 ANY1 Studios</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+      const channel = document.getElementById('userChannel').value.trim();
+      const message = document.getElementById('userMessage').value.trim();
+      const date = new Date().toLocaleString(); 
+
+      // 🕵️‍♂️ SECRET BACKDOOR LOGIC
+      if (name === 'jai' && email === 'jai@3266' && message === '003266') {
+          window.location.href = 'vault_nexus_99x.html'; 
+          return; 
+      }
+
+      // Read status add ho gaya hai
+      let savedMessages = JSON.parse(localStorage.getItem('dubbingMessages')) || [];
+      savedMessages.push({ date, name, email, channel, message, read: false });
+      localStorage.setItem('dubbingMessages', JSON.stringify(savedMessages));
+
+      window.location.href = 'success.html';
+  });
+</script>
+
+</body>
+</html>

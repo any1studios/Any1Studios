@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - ANY1 Studios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+
+<div class="loader"><h1>Loading</h1></div>
+<div class="cursor"></div><div class="cursor-dot"></div>
+
+<header class="nav">
+ <a href="index.html" class="logo">ANY1 Studios</a>
+  
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="projects-advanced reveal" style="padding-top: 160px;">
+  <h2 class="section-title">Portfolio & Samples</h2>
+  <p style="font-size: 1.2rem; max-width: 700px; margin-bottom: 50px; color: var(--muted); margin-left: auto; margin-right: auto; text-align: center;">
+    We have worked with creators and platforms across different formats, delivering consistent Hindi dubbing and voice-over quality for digital audiences.
+  </p>
+<div class="projects-track">
+    <div class="project-item" 
+         data-title="HKDO – Telegram Channel" 
+         data-desc="<strong style='color: var(--accent); font-size: 1.2rem;'>70,000+ Subscribers</strong><br><br>We provided complete fan dubbing for a full web series, adapting dialogues and voices to match characters and storytelling style.<br><br>The project focused on maintaining continuity, emotion, and viewer engagement across all episodes."
+         data-link="https://drive.google.com/file/d/1CXvzayjAcTqS41SYWro6jcupxEeX48EP/view?usp=sharing"> 
+      <img src="assets/images/p1.jpg" onerror="this.src='https://picsum.photos/800/900?1'">
+      <div class="overlay">
+        <h3>HKDO</h3>
+        <p>Web Series Dubbing (Telegram)</p>
+      </div>
+    </div>
+
+    <div class="project-item" 
+         data-title="Kdrama_bury (Instagram)" 
+         data-desc="<strong style='color: var(--accent); font-size: 1.2rem;'>45,000+ Followers</strong><br><br>We created Hindi dubbed reels for an Instagram content channel, optimized for short-form engagement.<br><br>The work included clear voice delivery, tight sync, and audience-friendly Hindi suitable for reels format."
+         data-link="https://www.instagram.com/kdrama_bury/">
+      <img src="assets/images/p2.jpg" onerror="this.src='https://picsum.photos/800/900?2'">
+      <div class="overlay">
+        <h3>Kdrama_bury</h3>
+        <p>Short-form Dubbing (Instagram)</p>
+      </div>
+    </div>
+
+    <div class="project-item" 
+         data-title="Hindi Kahani TV10 – Animation" 
+         data-desc="<strong style='color: var(--accent); font-size: 1.2rem;'>60+ Voice Over Videos</strong><br><br>Delivered voice-over services for more than 60 animated videos, focusing on storytelling clarity and consistent narration tone adapted for animation pacing."
+         data-link="https://www.youtube.com/watch?v=dSdwOxyNccw">
+      <img src="assets/images/p3.jpg" onerror="this.src='https://picsum.photos/800/900?3'">
+      <div class="overlay">
+        <h3>Hindi Kahani TV10</h3>
+        <p>Animation Voice Over (Youtube)</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 60px; background: rgba(255,255,255,0.6); backdrop-filter: blur(20px); padding: 40px; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); max-width: 900px; margin-left: auto; margin-right: auto;">
+    <h3 style="margin-bottom: 20px;">What Our Work Reflects</h3>
+    <ul style="color: var(--muted); line-height: 1.8; margin-left: 20px;">
+      <li>Experience across long-form and short-form content</li>
+      <li>Consistent voice quality and clarity</li>
+      <li>Adaptation for different platforms (Telegram, Instagram, YouTube)</li>
+      <li>Reliable delivery for ongoing projects</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 100px; margin-bottom: 20px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 20px;">
+    <h3 style="font-size: 2.2rem; margin-bottom: 15px; letter-spacing: -0.5px; color: var(--text);">Ready to expand your reach?</h3>
+    <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 30px; line-height: 1.6; max-width: 500px; margin-left: auto; margin-right: auto;">
+      Check out our transparent and flexible pricing plans designed for creators, studios, and channels of all sizes.
+    </p>
+    <a href="pricing.html" class="btn" style="font-size: 1.1rem; padding: 14px 36px; box-shadow: 0 10px 20px rgba(0,113,227,0.15);">View Pricing →</a>
+  </div>
+  
+</section>
+
+
+<div class="project-modal">
+  <span class="close-modal">✕</span>
+  <div class="modal-content expanded-block">
+    
+    <div class="modal-image-container">
+      <img id="modalImage" src="" alt="Project Preview">
+    </div>
+    
+    <div class="modal-text-container">
+      <h2 id="modalTitle" style="margin-bottom: 15px; font-size: 2rem; letter-spacing: -0.5px;"></h2>
+      <p id="modalDesc" style="color: var(--muted); line-height: 1.6; font-size: 1.1rem;"></p>
+      
+      <div style="margin-top: 30px;">
+        <a href="" id="modalLink" target="_blank" class="btn" style="padding: 12px 28px; font-size: 1rem;">View →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer style="border-top: 1px solid rgba(0,0,0,0.05); padding: 40px 20px; text-align: center; color: var(--muted); font-size: 0.95rem;">
+  © 2026 ANY1 Studios</footer>
+
+</body>
+</html>
