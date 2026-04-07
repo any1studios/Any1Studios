@@ -139,3 +139,34 @@ if (projectItems.length > 0 && modal) {
     }
   });
 }
+
+
+
+
+/* ===============================
+   DARK/LIGHT THEME SWITCHER LOGIC
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const themeCheckbox = document.getElementById("theme-switch-checkbox");
+  
+  // Check if user previously selected Dark Mode
+  const currentTheme = localStorage.getItem("theme");
+
+  if (currentTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    if (themeCheckbox) themeCheckbox.checked = true; // Switch ko moon pe set karein
+  }
+
+  // Jab user button par click kare
+  if (themeCheckbox) {
+    themeCheckbox.addEventListener("change", function () {
+      if (this.checked) {
+        document.body.classList.add("dark-mode");
+        localStorage.setItem("theme", "dark"); // Browser me Dark save karein
+      } else {
+        document.body.classList.remove("dark-mode");
+        localStorage.setItem("theme", "light"); // Browser me Light save karein
+      }
+    });
+  }
+});
