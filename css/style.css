@@ -531,7 +531,6 @@ body.no-scroll {
   .close-modal { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.2rem; }
 }
 
-
 /* =========================================
    DARK MODE ENGINE & THEME SWITCHER
 ========================================= */
@@ -689,4 +688,50 @@ body.dark-mode .premium-cta-box p,
 body.dark-mode .price-highlight h2,
 body.dark-mode .price-highlight p {
   color: #f5f5f7 !important;
+}
+
+/* =========================================
+   INQUIRIES VAULT & COPY BUTTON STYLES
+========================================= */
+
+/* Enhanced Partition for messages */
+.message-item {
+  padding: 20px; 
+  border-bottom: 2px dashed rgba(150, 150, 150, 0.3); 
+  display: flex;
+  gap: 20px;
+}
+
+.message-item:last-child { 
+  border-bottom: none; 
+}
+
+/* Email Copy Button Style */
+.copy-btn {
+  background: rgba(150, 150, 150, 0.1);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Dark Mode Optimization for Copy Button */
+body.dark-mode .copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .copy-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
