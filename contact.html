@@ -12,7 +12,7 @@
 <div class="cursor"></div><div class="cursor-dot"></div>
 
 <header class="nav">
-  <a href="index.html" class="logo">ANY1 Studios</a>
+  <a href="index.html" class="logo">ANY<span id="unreadIndicator">1</span> Studios</a>
   
   <div class="hamburger">
     <span></span><span></span><span></span>
@@ -79,6 +79,22 @@
   © 2026 ANY1 Studios</footer>
 
 <script>
+  // 1. UNREAD MESSAGE INDICATOR LOGIC
+  window.addEventListener('DOMContentLoaded', () => {
+    let savedMessages = JSON.parse(localStorage.getItem('dubbingMessages')) || [];
+    // Check karega ki koi bhi message unread hai kya
+    let hasUnread = savedMessages.some(msg => msg.read === false);
+    
+    if (hasUnread) {
+      let indicator = document.getElementById('unreadIndicator');
+      if (indicator) {
+        // Important lagaya hai kyunki css me logo color par important laga hua hai
+        indicator.style.setProperty('color', 'var(--accent)', 'important'); 
+      }
+    }
+  });
+
+  // 2. CONTACT FORM SUBMIT LOGIC
   document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault(); 
       
